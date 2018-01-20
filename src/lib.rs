@@ -44,6 +44,7 @@ use std::net::{SocketAddr, ToSocketAddrs};
 use log::{error, info};
 use mio::Poll;
 use url;
+pub use url::Url;
 
 /// A utility function for setting up a WebSocket server.
 ///
