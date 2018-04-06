@@ -13,7 +13,7 @@ listen("127.0.0.1:3012", |out| {
 
 Introduction
 ------------
-[![Build Status](https://travis-ci.org/housleyjk/ws-rs.svg?branch=stable)](https://travis-ci.org/housleyjk/ws-rs)
+[![Build Status](https://travis-ci.org/peddermaster2/ws-rs.svg?branch=master)](https://travis-ci.org/peddermaster2/ws-rs)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Crate](http://meritbadge.herokuapp.com/ws)](https://crates.io/crates/ws)
 [![dependency status](https://deps.rs/repo/github/peddermaster2/ws-rs/status.svg)](https://deps.rs/repo/github/peddermaster2/ws-rs)
