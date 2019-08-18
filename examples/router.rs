@@ -1,16 +1,17 @@
-extern crate env_logger;
-/// WebSocket server using trait objects to route
-/// to an infinitely extensible number of handlers
-extern crate ws;
+//! WebSocket server using trait objects to route
+//! to an infinitely extensible number of handlers
 
-// A WebSocket handler that routes connections to different boxed handlers by resource
+use env_logger;
+use ws;
+
+/// A WebSocket handler that routes connections to different boxed handlers by resource
 struct Router {
     sender: ws::Sender,
     inner: Box<dyn ws::Handler>,
 }
 
 impl ws::Handler for Router {
-    fn on_request(&mut self, req: &ws::Request) -> ws::Result<(ws::Response)> {
+    fn on_request(&mut self, req: &ws::Request) -> ws::Result<ws::Response> {
         // Clone the sender so that we can move it into the child handler
         let out = self.sender.clone();
 
@@ -79,7 +80,7 @@ impl ws::Handler for Router {
 struct NotFound;
 
 impl ws::Handler for NotFound {
-    fn on_request(&mut self, req: &ws::Request) -> ws::Result<(ws::Response)> {
+    fn on_request(&mut self, req: &ws::Request) -> ws::Result<ws::Response> {
         // This handler responds to all requests with a 404
         let mut res = ws::Response::from_request(req)?;
         res.set_status(404);

@@ -1,20 +1,20 @@
-/// An example of a chat web application server
-extern crate ws;
+//! An example of a chat web application server
+
 use ws::{listen, Handler, Message, Request, Response, Result, Sender};
 
 // This can be read from a file
 static INDEX_HTML: &[u8] = br#"
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-	</head>
-	<body>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
       <pre id="messages"></pre>
-			<form id="form">
-				<input type="text" id="msg">
-				<input type="submit" value="Send">
-			</form>
+            <form id="form">
+                <input type="text" id="msg">
+                <input type="submit" value="Send">
+            </form>
       <script>
         var socket = new WebSocket("ws://" + window.location.host + "/ws");
         socket.onmessage = function (event) {
@@ -28,10 +28,10 @@ static INDEX_HTML: &[u8] = br#"
           socket.send(input.value);
           input.value = "";
         });
-		</script>
-	</body>
+        </script>
+    </body>
 </html>
-    "#;
+"#;
 
 // Server web application handler
 struct Server {
@@ -40,7 +40,7 @@ struct Server {
 
 impl Handler for Server {
     //
-    fn on_request(&mut self, req: &Request) -> Result<(Response)> {
+    fn on_request(&mut self, req: &Request) -> Result<Response> {
         // Using multiple handlers is better (see router example)
         match req.resource() {
             // The default trait implementation
