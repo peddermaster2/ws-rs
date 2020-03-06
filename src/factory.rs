@@ -125,7 +125,6 @@ mod test {
     use crate::message;
     use crate::protocol::CloseCode;
     use crate::result::Result;
-    use mio;
 
     #[derive(Debug, Eq, PartialEq)]
     struct M;

@@ -43,7 +43,6 @@ use std::net::{SocketAddr, ToSocketAddrs};
 
 use log::{error, info};
 use mio::Poll;
-use url;
 pub use url::Url;
 
 /// A utility function for setting up a WebSocket server.
@@ -98,7 +97,6 @@ where
 ///     }
 /// }).unwrap()
 /// ```
-///
 pub fn connect<U, F, H>(url: U, factory: F) -> Result<()>
 where
     U: Borrow<str>,
@@ -106,7 +104,7 @@ where
     H: Handler,
 {
     let mut ws = WebSocket::new(factory)?;
-    let parsed = url::Url::parse(url.borrow()).map_err(|err| {
+    let parsed = Url::parse(url.borrow()).map_err(|err| {
         Error::new(
             ErrorKind::Internal,
             format!("Unable to parse {} as url due to {:?}", url.borrow(), err),
@@ -319,7 +317,7 @@ where
 
     /// Queue an outgoing connection on this WebSocket. This method may be called multiple times,
     /// but the actual connections will not be established until `run` is called.
-    pub fn connect(&mut self, url: url::Url) -> Result<&mut WebSocket<F>> {
+    pub fn connect(&mut self, url: Url) -> Result<&mut WebSocket<F>> {
         let sender = self.handler.sender();
         info!("Queuing connection to {}", url);
         sender.connect(url)?;

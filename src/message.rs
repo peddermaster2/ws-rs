@@ -1,6 +1,5 @@
 use std::convert::{From, Into};
 use std::fmt;
-
 use std::str::from_utf8;
 
 use crate::protocol::OpCode;

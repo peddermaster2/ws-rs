@@ -7,10 +7,8 @@ use std::time::Duration;
 use std::usize;
 
 use log::{debug, error, info, trace};
-use mio;
 use mio::tcp::{TcpListener, TcpStream};
 use mio::{Poll, PollOpt, Ready, Token};
-use mio_extras;
 #[cfg(feature = "native_tls")]
 use native_tls::Error as SslError;
 use slab::Slab;

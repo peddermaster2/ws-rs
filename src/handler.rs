@@ -4,7 +4,6 @@ use log::{debug, error, log_enabled, trace};
 use native_tls::{TlsConnector, TlsStream as SslStream};
 #[cfg(feature = "ssl")]
 use openssl::ssl::{SslConnector, SslMethod, SslStream};
-use url;
 
 use crate::frame::Frame;
 use crate::handshake::{Handshake, Request, Response};
@@ -360,8 +359,6 @@ mod test {
     use crate::message;
     use crate::protocol::CloseCode;
     use crate::result::Result;
-    use mio;
-    use url;
 
     #[derive(Debug, Eq, PartialEq)]
     struct M;

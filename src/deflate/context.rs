@@ -6,7 +6,7 @@ use std::slice;
 use log::{error, trace};
 
 use super::ffi;
-use super::libc::{c_char, c_int, c_uint};
+use libc::{c_char, c_int, c_uint};
 
 use crate::result::{Error, Kind, Result};
 

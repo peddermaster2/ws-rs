@@ -7,7 +7,6 @@ use log::trace;
 use native_tls::TlsStream as SslStream;
 #[cfg(feature = "ssl")]
 use openssl::ssl::SslStream;
-use url;
 
 use crate::frame::Frame;
 use crate::handler::Handler;

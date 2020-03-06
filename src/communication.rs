@@ -1,18 +1,16 @@
 use std::borrow::Cow;
+use std::cmp::PartialEq;
 use std::convert::Into;
+use std::fmt;
+use std::hash::{Hash, Hasher};
 
-use mio;
 use mio::Token;
 use mio_extras::timer::Timeout;
-use url;
 
 use crate::io::ALL;
 use crate::message;
 use crate::protocol::CloseCode;
 use crate::result::{Error, Result};
-use std::cmp::PartialEq;
-use std::fmt;
-use std::hash::{Hash, Hasher};
 
 #[derive(Debug, Clone)]
 pub enum Signal {

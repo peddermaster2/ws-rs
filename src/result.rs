@@ -8,8 +8,6 @@ use std::io;
 use std::result::Result as StdResult;
 use std::str::Utf8Error;
 
-use httparse;
-use mio;
 #[cfg(feature = "nativetls")]
 use native_tls::{Error as SslError, HandshakeError as SslHandshakeError};
 #[cfg(feature = "ssl")]

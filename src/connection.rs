@@ -15,7 +15,6 @@ use mio_extras::timer::Timeout;
 use native_tls::HandshakeError;
 #[cfg(feature = "ssl")]
 use openssl::ssl::HandshakeError;
-use url;
 
 use crate::frame::Frame;
 use crate::handler::Handler;

@@ -4,7 +4,6 @@ use std::io::{Cursor, ErrorKind, Read, Write};
 
 use byteorder::{BigEndian, ReadBytesExt, WriteBytesExt};
 use log::{debug, trace};
-use rand;
 
 use crate::protocol::{CloseCode, OpCode};
 use crate::result::{Error, Kind, Result};

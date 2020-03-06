@@ -5,11 +5,8 @@ use std::io::Write;
 use std::net::SocketAddr;
 use std::str::from_utf8;
 
-use httparse;
 use log::{debug, error};
-use rand;
 use sha1::{self, Digest};
-use url;
 
 use crate::result::{Error, Kind, Result};
 
@@ -735,7 +732,8 @@ mod test {
             Upgrade: websocket\r\n\
             Forwarded: by=192.168.1.1; for=192.0.2.43, for=\"[2001:db8:cafe::17]\", for=unknown\r\n\
             Sec-WebSocket-Version: 13\r\n\
-            Sec-WebSocket-Key: q16eN37NCfVwUChPvBdk4g==\r\n\r\n")
+            Sec-WebSocket-Key: q16eN37NCfVwUChPvBdk4g==\r\n\r\n"
+        )
         .unwrap();
         let req = Request::parse(&buf).unwrap().unwrap();
         let res = Response::from_request(&req).unwrap();
