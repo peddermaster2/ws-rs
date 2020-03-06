@@ -18,7 +18,7 @@ edition = "2018"
 
 [dependencies]
 byteorder = "1.2"
-bytes = "0.4"
+bytes = "0.5"
 httparse = "1.2"
 log = "0.4"
 mio = "0.6"

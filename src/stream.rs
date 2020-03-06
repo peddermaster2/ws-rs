@@ -4,6 +4,7 @@ use std::io;
 use std::io::ErrorKind::WouldBlock;
 #[cfg(any(feature = "ssl", feature = "nativetls"))]
 use std::mem::replace;
+use std::mem::transmute;
 use std::net::SocketAddr;
 
 use bytes::{Buf, BufMut};
@@ -32,6 +33,7 @@ fn map_non_block<T>(res: io::Result<T>) -> io::Result<Option<T>> {
     }
 }
 
+#[allow(clippy::transmute_ptr_to_ptr)]
 pub trait TryReadBuf: io::Read {
     fn try_read_buf<B: BufMut>(&mut self, buf: &mut B) -> io::Result<Option<usize>>
     where
@@ -42,7 +44,7 @@ pub trait TryReadBuf: io::Read {
         // If your protocol is msg based (instead of continuous stream) you should
         // ensure that your buffer is large enough to hold an entire segment (1532 bytes if not jumbo
         // frames)
-        let res = map_non_block(self.read(unsafe { buf.bytes_mut() }));
+        let res = map_non_block(self.read(unsafe { transmute(buf.bytes_mut()) }));
 
         if let Ok(Some(cnt)) = res {
             unsafe {
