@@ -8,9 +8,6 @@
 // TODO: num threads, num connections per thread, num concurrent connections per thread, num
 // messages per connection, length of message, text or binary
 
-use env_logger;
-use time;
-use url;
 use ws::{Builder, CloseCode, Handler, Handshake, Message, Result, Sender, Settings};
 
 const CONNECTIONS: usize = 10_000; // simultaneous

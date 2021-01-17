@@ -1,8 +1,6 @@
 //! A single-threaded client + server example showing how flexible closure handlers can be for
 //! trivial applications.
 
-use env_logger;
-use url;
 use ws::{Sender, WebSocket};
 
 fn main() {

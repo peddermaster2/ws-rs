@@ -1,7 +1,5 @@
 use std::net::Ipv4Addr;
 
-use ws;
-
 struct Handler;
 impl ws::Handler for Handler {}
 

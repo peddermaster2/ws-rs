@@ -2,9 +2,7 @@
 
 use std::str::from_utf8;
 
-use env_logger;
 use mio_extras::timer::Timeout;
-use time;
 use ws::util::Token;
 use ws::{
     listen, CloseCode, Error, ErrorKind, Frame, Handler, Handshake, Message, OpCode, Result, Sender,

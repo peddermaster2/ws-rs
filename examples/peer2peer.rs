@@ -29,10 +29,7 @@ use std::io::prelude::*;
 use std::thread;
 
 use clap::{App, Arg};
-use env_logger;
 use log::info;
-use url;
-use ws;
 
 fn main() {
     // Setup logging

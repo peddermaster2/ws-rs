@@ -5,7 +5,6 @@ use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
 
-use env_logger;
 use ws::{connect, listen, CloseCode, Handler, Message, Result, Sender};
 
 fn main() {

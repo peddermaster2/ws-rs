@@ -1,9 +1,6 @@
 //! WebSocket server using trait objects to route
 //! to an infinitely extensible number of handlers
 
-use env_logger;
-use ws;
-
 /// A WebSocket handler that routes connections to different boxed handlers by resource
 struct Router {
     sender: ws::Sender,

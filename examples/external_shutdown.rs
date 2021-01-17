@@ -2,8 +2,6 @@ use std::sync::mpsc::channel;
 use std::thread;
 use std::time::Duration;
 
-use ws;
-
 fn main() {
     let (tx, rx) = channel();
 

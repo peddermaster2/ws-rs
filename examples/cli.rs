@@ -9,8 +9,6 @@ use std::sync::mpsc::Sender as TSender;
 use std::thread;
 
 use clap::{App, Arg};
-use env_logger;
-use term;
 use ws::{connect, CloseCode, Error, ErrorKind, Handler, Handshake, Message, Result, Sender};
 
 fn main() {
