@@ -6,7 +6,7 @@ use std::net::SocketAddr;
 use std::str::from_utf8;
 
 use log::{debug, error};
-use sha1::{self, Digest};
+use sha1::{Digest, Sha1};
 
 use crate::result::{Error, Kind, Result};
 
@@ -20,12 +20,12 @@ fn generate_key() -> String {
 }
 
 pub fn hash_key(key: &[u8]) -> String {
-    let mut hasher = sha1::Sha1::new();
+    let mut hasher = Sha1::new();
 
-    hasher.input(key);
-    hasher.input(WS_GUID.as_bytes());
+    hasher.update(key);
+    hasher.update(WS_GUID.as_bytes());
 
-    encode_base64(&hasher.result())
+    encode_base64(&hasher.finalize())
 }
 
 // This code is based on rustc_serialize base64 STANDARD
