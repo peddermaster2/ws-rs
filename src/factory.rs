@@ -163,7 +163,7 @@ mod test {
 
         let mut factory = |_| |_| Ok(());
 
-        factory.connection_made(Sender::new(mio::Token(0), chn, 0));
+        let _ = factory.connection_made(Sender::new(mio::Token(0), chn, 0));
     }
 
     #[test]

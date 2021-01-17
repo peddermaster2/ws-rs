@@ -344,14 +344,14 @@ where
             PollOpt::edge() | PollOpt::oneshot(),
         )
         .map_err(Error::from)
-        .or_else(|err| {
+        .map_err(|err| {
             error!(
                 "Encountered error while trying to build WebSocket connection: {}",
                 err
             );
             let handler = self.connections.remove(tok.into()).consume();
             self.factory.connection_lost(handler);
-            Err(err)
+            err
         })
     }
 

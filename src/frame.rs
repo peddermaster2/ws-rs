@@ -191,10 +191,7 @@ impl Frame {
     #[inline]
     pub fn message(data: Vec<u8>, code: OpCode, finished: bool) -> Frame {
         debug_assert!(
-            match code {
-                OpCode::Text | OpCode::Binary | OpCode::Continue => true,
-                _ => false,
-            },
+            matches!(code, OpCode::Text | OpCode::Binary | OpCode::Continue),
             "Invalid opcode for data frame."
         );
 

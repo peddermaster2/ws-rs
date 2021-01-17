@@ -52,27 +52,18 @@ pub enum Endpoint {
 impl State {
     #[inline]
     pub fn is_connecting(&self) -> bool {
-        match *self {
-            State::Connecting(..) => true,
-            _ => false,
-        }
+        matches!(*self, State::Connecting(..))
     }
 
     #[allow(dead_code)]
     #[inline]
     pub fn is_open(&self) -> bool {
-        match *self {
-            State::Open => true,
-            _ => false,
-        }
+        matches!(*self, State::Open)
     }
 
     #[inline]
     pub fn is_closing(&self) -> bool {
-        match *self {
-            State::AwaitingClose | State::FinishedClose => true,
-            _ => false,
-        }
+        matches!(*self, State::AwaitingClose | State::FinishedClose)
     }
 }
 
@@ -805,8 +796,7 @@ where
                                 );
                                 let named = CloseCode::from(raw_code);
                                 if let CloseCode::Other(code) = named {
-                                    if code < 1000 ||
-                                            code >= 5000 ||
+                                    if !(1000..5000).contains(&code) ||
                                             code == 1004 ||
                                             code == 1014 ||
                                             code == 1016 || // these below are here to pass the autobahn test suite
